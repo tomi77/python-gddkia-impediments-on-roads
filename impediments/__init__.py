@@ -1,10 +1,8 @@
 from __future__ import absolute_import
 
-try:
-    from urllib2 import urlopen
-except ImportError:
-    from urllib.request import urlopen
 import xml.dom.minidom as dom
+
+from six.moves.urllib.request import urlopen
 
 from .models import Impediment
 
