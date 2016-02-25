@@ -46,14 +46,14 @@ class XMLModel(object):
 
 class Impediment(XMLModel):
     def __init__(self, node):
-        self.impedimentType = self.find_text(node, 'typ')
-        self.routeNumber = self.find_text(node, 'nr_drogi')
+        self.type = self.find_text(node, 'typ')
+        self.route_number = self.find_text(node, 'nr_drogi')
         self.province = self.find_text(node, 'woj')
-        self.initialMileage = self.find_float(node, 'km')
+        self.initial_mileage = self.find_float(node, 'km')
         self.length = self.find_float(node, 'dl')
         self.name = self.find_text(node, 'nazwa_odcinka')
-        self.geoLat = self.find_float(node, 'geo_lat')
-        self.geoLong = self.find_float(node, 'geo_long')
-        self.startDate = self.find_date(node, 'data_powstania')
-        self.endDate = self.find_date(node, 'data_likwidacji')
+        self.latitude = self.find_float(node, 'geo_lat')
+        self.longitude = self.find_float(node, 'geo_long')
+        self.start_date = self.find_date(node, 'data_powstania')
+        self.end_date = self.find_date(node, 'data_likwidacji')
         self.detour = self.find_text(node, 'objazd')
