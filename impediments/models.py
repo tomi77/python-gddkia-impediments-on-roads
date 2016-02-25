@@ -1,6 +1,8 @@
 # coding:utf-8
-from datetime import datetime
+from __future__ import unicode_literals
+
 import time
+from datetime import datetime
 
 
 class XMLModel(object):
@@ -33,7 +35,7 @@ class XMLModel(object):
 
     def get_date(self, nodes):
         txt = self.get_text(nodes)[:-6].replace('T', ' ')
-        if txt == u'Do odwołania:00':
+        if txt == 'Do odwołania:00':
             return datetime(2099, 12, 31)
         else:
             time_format = '%Y-%m-%d %H:%M:%S'
