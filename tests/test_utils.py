@@ -2,14 +2,18 @@
 from __future__ import unicode_literals
 
 from datetime import datetime
-from unittest import TestCase, mock
+try:
+    from unittest import TestCase, mock
+except ImportError:
+    from unittest import TestCase
+    from mock import mock
 
 from impediments.utils import get_impediments
 
 
 class TestImpediments(TestCase):
     def setUp(self):
-        self.xml = open('tests/fixtures/utrdane.xml', encoding='utf-8')
+        self.xml = open('tests/fixtures/utrdane.xml')
 
     @mock.patch('impediments.utils.urlopen')
     def test_x(self, urlopen):

@@ -5,6 +5,6 @@ python:
 install:
   - pip install coveralls six unittest2 mock
 script:
-  - coverage run setup.py test
+  - coverage run -m unittest discover -s tests
 after_success:
   - coveralls
