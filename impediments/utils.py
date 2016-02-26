@@ -9,6 +9,7 @@ from six.moves.urllib.request import urlopen
 
 
 XML_URL = 'http://www.gddkia.gov.pl/dane/zima_html/utrdane.xml'
+TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 
 def find_text(node, name):
@@ -28,31 +29,31 @@ def find_date(node, name):
 
 
 def get_text(nodes):
-    rc = ""
+    val = ''
     for node in nodes:
         if node.nodeType == node.TEXT_NODE:
-            rc += node.data
-    return rc
+            val += node.data
+    return val or None
 
 
 def get_int(nodes):
-    return int(get_text(nodes))
+    val = get_text(nodes)
+    return int(val) if val else None
 
 
 def get_float(nodes):
-    x = get_text(nodes)
-    return float(x.replace(',', '.')) if x else 0.0
+    val = get_text(nodes)
+    return float(val.replace(',', '.')) if val else None
 
 
 def get_date(nodes):
-    txt = get_text(nodes)[:-6].replace('T', ' ')
-    if txt == 'Do odwołania:00':
-        return datetime(2099, 12, 31)
+    val = get_text(nodes)[:-6].replace('T', ' ')
+    if val == 'Do odwołania:00':
+        return None
     else:
-        time_format = '%Y-%m-%d %H:%M:%S'
-        st = time.strptime(txt, time_format)
-        return datetime(st.tm_year, st.tm_mon, st.tm_mday,
-                        st.tm_hour, st.tm_min, st.tm_sec)
+        val = time.strptime(val, TIME_FORMAT)
+        return datetime(val.tm_year, val.tm_mon, val.tm_mday,
+                        val.tm_hour, val.tm_min, val.tm_sec)
 
 
 def extract(node):
