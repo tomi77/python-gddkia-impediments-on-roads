@@ -31,5 +31,7 @@ setup(
     ],
     license=__license__,
     packages=find_packages(exclude=['tests']),
-    install_requires=['six']
+    install_requires=['six'],
+    test_suite='tests',
+    tests_require=['unittest2', 'mock'],
 )
