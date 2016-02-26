@@ -57,6 +57,6 @@ class TestImpediments(TestCase):
                 'longitude': 19.120233,
                 'start_date': datetime(2016, 2, 19, 20),
                 'end_date': datetime(2016, 3, 1),
-                'detour': '',
+                'detour': None,
             },
         ])
