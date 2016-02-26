@@ -5,49 +5,37 @@ import time
 from datetime import datetime
 import xml.dom.minidom as dom
 
-from six.moves.urllib.request import urlopen
+from six.moves.urllib.request import urlopen  # pylint: disable=import-error
 
 
 XML_URL = 'http://www.gddkia.gov.pl/dane/zima_html/utrdane.xml'
 TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 
-def find_text(node, name):
-    return get_text(node.getElementsByTagName(name)[0].childNodes)
+def get_node_val(node, name):
+    try:
+        node = node.getElementsByTagName(name)[0].childNodes[0]
+        return node.data if node.nodeType == node.TEXT_NODE else None
+    except IndexError:
+        return None
 
 
-def find_int(node, name):
-    return get_int(node.getElementsByTagName(name)[0].childNodes)
+def get_text(node, name):
+    return get_node_val(node, name)
 
 
-def find_float(node, name):
-    return get_float(node.getElementsByTagName(name)[0].childNodes)
-
-
-def find_date(node, name):
-    return get_date(node.getElementsByTagName(name)[0].childNodes)
-
-
-def get_text(nodes):
-    val = ''
-    for node in nodes:
-        if node.nodeType == node.TEXT_NODE:
-            val += node.data
-    return val or None
-
-
-def get_int(nodes):
-    val = get_text(nodes)
+def get_int(node, name):
+    val = get_node_val(node, name)
     return int(val) if val else None
 
 
-def get_float(nodes):
-    val = get_text(nodes)
+def get_float(node, name):
+    val = get_node_val(node, name)
     return float(val.replace(',', '.')) if val else None
 
 
-def get_date(nodes):
-    val = get_text(nodes)[:-6].replace('T', ' ')
+def get_date(node, name):
+    val = get_node_val(node, name)[:-6].replace('T', ' ')
     if val == 'Do odwołania:00':
         return None
     else:
@@ -58,17 +46,17 @@ def get_date(nodes):
 
 def extract(node):
     return {
-        'type': find_text(node, 'typ'),
-        'route_number': find_text(node, 'nr_drogi'),
-        'province': find_text(node, 'woj'),
-        'initial_mileage': find_float(node, 'km'),
-        'length': find_float(node, 'dl'),
-        'name': find_text(node, 'nazwa_odcinka'),
-        'latitude': find_float(node, 'geo_lat'),
-        'longitude': find_float(node, 'geo_long'),
-        'start_date': find_date(node, 'data_powstania'),
-        'end_date': find_date(node, 'data_likwidacji'),
-        'detour': find_text(node, 'objazd'),
+        'type': get_text(node, 'typ'),
+        'route_number': get_text(node, 'nr_drogi'),
+        'province': get_text(node, 'woj'),
+        'initial_mileage': get_float(node, 'km'),
+        'length': get_float(node, 'dl'),
+        'name': get_text(node, 'nazwa_odcinka'),
+        'latitude': get_float(node, 'geo_lat'),
+        'longitude': get_float(node, 'geo_long'),
+        'start_date': get_date(node, 'data_powstania'),
+        'end_date': get_date(node, 'data_likwidacji'),
+        'detour': get_text(node, 'objazd'),
     }
 
 
@@ -77,9 +65,9 @@ def get_impediments():
     :raise urllib2.URLError | urllib.error.URLError: When
     :return:
     """
-    fh = urlopen(XML_URL)
+    file = urlopen(XML_URL)
 
-    doc = dom.parse(fh)
+    doc = dom.parse(file)
     xml = doc.documentElement
 
     nodes = xml.getElementsByTagName('utr')

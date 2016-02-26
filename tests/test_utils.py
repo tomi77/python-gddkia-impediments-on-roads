@@ -11,15 +11,14 @@ except ImportError:
 from impediments.utils import get_impediments
 
 
-class TestImpediments(TestCase):
-    def setUp(self):
-        self.xml = open('tests/fixtures/utrdane.xml')
-
+class TestUtils(TestCase):
     @mock.patch('impediments.utils.urlopen')
-    def test_x(self, urlopen):
-        self.maxDiff = None
-        urlopen.return_value = self.xml
+    def test_get_impediments(self, urlopen):
+        file = open('tests/fixtures/utrdane.xml')
+        urlopen.return_value = file
+
         impediments = get_impediments()
+
         self.assertEqual(len(impediments), 2)
         self.assertListEqual(impediments, [
             {
