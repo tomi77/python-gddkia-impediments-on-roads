@@ -1,5 +1,5 @@
 =======================================
-Impediments of roads provided by GDDKiA
+Impediments on roads provided by GDDKiA
 =======================================
 
 .. image:: https://codeclimate.com/github/tomi77/python-gddkia-impediments-on-roads/badges/gpa.svg
