@@ -82,4 +82,45 @@
             </czas_oczekiwania>
         </czasy_oczekiwania>
     </utr>
+    <utr>
+        <typ>U</typ>
+        <nr_drogi>1</nr_drogi>
+        <woj>łódzkie</woj>
+        <km>381.099</km>
+        <dl>1.234</dl>
+        <geo_lat>51.557778</geo_lat>
+        <geo_long>19.594314</geo_long>
+        <nazwa_odcinka>Głuchów - Tuszyn</nazwa_odcinka>
+        <data_powstania>2015-06-29T07:00:00+0200</data_powstania>
+        <data_likwidacji>DoTodwołania:00+0200</data_likwidacji>
+        <objazd>Budowa węzła Tuszyn w ciągu budowanej dr A-1. Utrudnienia dotycza skrzyżowania dr nr 1 od km 382+333-385+027 i dr nr 91c od km 0+000-1+045</objazd>
+        <objazd_mapy>
+            <mapa/>
+        </objazd_mapy>
+        <rodzaj>
+            <poz>U33</poz>
+        </rodzaj>
+        <skutki/>
+        <ogr_nosnosc/>
+        <ogr_nacisk/>
+        <ogr_skrajnia_pozioma/>
+        <ogr_skrajnia_pionowa/>
+        <ogr_szerokosc>3.5</ogr_szerokosc>
+        <ogr_predkosc>50</ogr_predkosc>
+        <ruch_wahadlowy>false</ruch_wahadlowy>
+        <sygnalizacja_swietlna>true</sygnalizacja_swietlna>
+        <awaria_mostu>false</awaria_mostu>
+        <ruch_2_kierunkowy>true</ruch_2_kierunkowy>
+        <droga_zamknieta>false</droga_zamknieta>
+        <czasy_oczekiwania>
+            <czas_oczekiwania>
+                <kierunek>O</kierunek>
+                <czas_od>00:00</czas_od>
+                <czas_do>00:00</czas_do>
+                <pn_pt>00:00</pn_pt>
+                <so>00:00</so>
+                <ni>00:00</ni>
+            </czas_oczekiwania>
+        </czasy_oczekiwania>
+    </utr>
 </utrudnienia>

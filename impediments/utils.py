@@ -31,11 +31,11 @@ def get_int(node, name):
 
 def get_float(node, name):
     val = get_node_val(node, name)
-    return float(val.replace(',', '.')) if val else None
+    return float(val) if val else None
 
 
 def get_date(node, name):
-    val = get_node_val(node, name)[:-6].replace('T', ' ')
+    val = get_node_val(node, name)[:-5].replace('T', ' ')
     if val == 'Do odwołania:00':
         return None
     else:

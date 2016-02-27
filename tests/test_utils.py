@@ -19,7 +19,7 @@ class TestUtils(TestCase):
 
         impediments = get_impediments()
 
-        self.assertEqual(len(impediments), 2)
+        self.assertEqual(len(impediments), 3)
         self.assertListEqual(impediments, [
             {
                 'type': 'U',
@@ -58,4 +58,19 @@ class TestUtils(TestCase):
                 'end_date': datetime(2016, 3, 1),
                 'detour': None,
             },
+            {
+                'type': 'U',
+                'route_number': '1',
+                'province': 'łódzkie',
+                'initial_mileage': 381.099,
+                'length': 1.234,
+                'name': 'Głuchów - Tuszyn',
+                'latitude': 51.557778,
+                'longitude': 19.594314,
+                'start_date': datetime(2015, 6, 29, 7),
+                'end_date': None,
+                'detour': 'Budowa węzła Tuszyn w ciągu budowanej dr A-1. '
+                          'Utrudnienia dotycza skrzyżowania dr nr 1 od km '
+                          '382+333-385+027 i dr nr 91c od km 0+000-1+045',
+            }
         ])
