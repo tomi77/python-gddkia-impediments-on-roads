@@ -7,4 +7,5 @@ Table Of Contents
    :maxdepth: 3
 
    quick_start
+   tips
    release_notes/index
