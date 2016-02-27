@@ -9,7 +9,8 @@ from six.moves.urllib.request import urlopen  # pylint: disable=import-error
 
 
 XML_URL = 'http://www.gddkia.gov.pl/dane/zima_html/utrdane.xml'
-TIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+TIME_FORMAT = '%Y-%m-%d %H:%M'
+UNDEFINED_TIME = 'Do odwołania'
 
 
 def get_node_val(node, name):
@@ -35,13 +36,13 @@ def get_float(node, name):
 
 
 def get_date(node, name):
-    val = get_node_val(node, name)[:-5].replace('T', ' ')
-    if val == 'Do odwołania:00':
+    val = get_node_val(node, name)[:-8].replace('T', ' ')
+    if val == UNDEFINED_TIME:
         return None
     else:
         val = time.strptime(val, TIME_FORMAT)
         return datetime(val.tm_year, val.tm_mon, val.tm_mday,
-                        val.tm_hour, val.tm_min, val.tm_sec)
+                        val.tm_hour, val.tm_min)
 
 
 def extract(node):
