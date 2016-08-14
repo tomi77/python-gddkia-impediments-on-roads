@@ -11,3 +11,21 @@ Impediments on roads provided by GDDKiA
     :target: https://coveralls.io/github/tomi77/python-gddkia-impediments-on-roads?branch=master
 
 Simple wrapper for a data about impediments on roads provided by GDDKiA.
+
+Installation
+============
+
+Install package via ``pip``
+::
+
+    pip install gddkia-impediments-on-roads
+
+
+Usage
+=====
+
+::
+
+    from impediments import get_impediments
+
+    impediments = get_impediments()
