@@ -1,5 +1,3 @@
-from codecs import open
-
 from setuptools import setup, find_packages
 
 setup(
@@ -9,24 +7,25 @@ setup(
     author_email='tomasz.rup@gmail.com',
     url='https://github.com/tomi77/python-gddkia-impediments-on-roads',
     description='Impediments on roads provided by GDDKiA',
-    long_description=open("README.rst").read(),
+    long_description=open("README.rst", encoding="UTF-8").read(),
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+        'Programming Language :: Python :: 3.13',
+        'Programming Language :: Python :: 3.14',
         'Topic :: Software Development',
         'Topic :: Software Development :: Libraries',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Utilities',
     ],
     license='MIT',
-    packages=find_packages(exclude=['tests']),
-    install_requires=['six']
+    packages=find_packages(exclude=['tests'])
 )

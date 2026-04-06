@@ -1,11 +1,7 @@
-# coding:utf-8
-from __future__ import unicode_literals
-
 import time
 from datetime import datetime
 import xml.dom.minidom as dom
-
-from six.moves.urllib.request import urlopen  # pylint: disable=import-error
+from urllib.request import urlopen
 
 
 XML_URL = 'http://www.gddkia.gov.pl/dane/zima_html/utrdane.xml'
@@ -63,7 +59,7 @@ def extract(node):
 
 def get_impediments():
     """
-    :raise urllib2.URLError | urllib.error.URLError: When
+    :raise urllib.error.URLError: When
     :return:
     """
     file = urlopen(XML_URL)

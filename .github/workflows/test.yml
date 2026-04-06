@@ -1,0 +1,39 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.runs-on }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - python-version: "3.9"
+            runs-on: ubuntu-latest
+          - python-version: "3.10"
+            runs-on: ubuntu-latest
+          - python-version: "3.11"
+            runs-on: ubuntu-latest
+          - python-version: "3.12"
+            runs-on: ubuntu-latest
+          - python-version: "3.13"
+            runs-on: ubuntu-latest
+          - python-version: "3.14"
+            runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml coverage
+
+      - name: Run tests
+        run: coverage run -m unittest discover -s tests

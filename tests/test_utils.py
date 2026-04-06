@@ -1,12 +1,5 @@
-# coding:utf-8
-from __future__ import unicode_literals
-
 from datetime import datetime
-try:
-    from unittest import TestCase, mock
-except ImportError:
-    from unittest import TestCase
-    from mock import mock
+from unittest import TestCase, mock
 
 from impediments.utils import get_impediments
 

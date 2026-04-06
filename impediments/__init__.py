@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from .constants import IMPEDIMENT_TYPES
 from .utils import get_impediments
 
