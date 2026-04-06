@@ -7,7 +7,8 @@ setup(
     author_email='tomasz.rup@gmail.com',
     url='https://github.com/tomi77/python-gddkia-impediments-on-roads',
     description='Impediments on roads provided by GDDKiA',
-    long_description=open("README.rst", encoding="UTF-8").read(),
+    long_description=open("README.md", encoding="UTF-8").read(),
+    long_description_content_type="text/markdown",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
