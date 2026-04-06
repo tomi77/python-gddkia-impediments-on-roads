@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="gddkia-impediments-on-roads",
-    version='0.1.1',
+    version='1.0.0',
     author='Tomasz Jakub Rup',
     author_email='tomasz.rup@gmail.com',
     url='https://github.com/tomi77/python-gddkia-impediments-on-roads',
